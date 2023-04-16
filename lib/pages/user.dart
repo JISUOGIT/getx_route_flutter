@@ -17,7 +17,6 @@ class UserPage extends StatelessWidget {
           children: [
             // user 객체 받기
             //Text('${(Get.arguments as User).name} : ${(Get.arguments as User).age}'),
-
             // User 객체를 argument 지정하고 name, age argument 받기
             Text('${(Get.parameters['uid'])}'),
             Text('${(Get.parameters['name'])}님 안녕하세요'),
