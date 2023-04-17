@@ -6,7 +6,7 @@ class WithGetX extends StatelessWidget {
   WithGetX({Key? key}) : super(key: key);
 
   // 위젯 생성시 controller 생성성
- CountControllerWithGetX _controller = Get.put(CountControllerWithGetX());
+  CountControllerWithGetX _controller = Get.put(CountControllerWithGetX());
 
   // String id 부여
   Widget _button(String id) {
