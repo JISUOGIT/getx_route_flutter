@@ -9,12 +9,12 @@ class WithGetX extends StatelessWidget {
   CountControllerWithGetX _controller = Get.put(CountControllerWithGetX());
 
   // String id 부여
-  Widget _button(String id) {
+  Widget _button() {
     return ElevatedButton(
       onPressed: () {
         // context 없어서 context 명시 되지 않은 부분에서 사용하기에
         // 따로 함수 기능으로 사용할 수 있다.
-        _controller.increase(id);
+        _controller.increase();
       },
       child: Text(
         '+',
@@ -39,8 +39,8 @@ class WithGetX extends StatelessWidget {
           ),
           GetBuilder<CountControllerWithGetX>(
             // 개인 고유 id 부여
-            id: "first",
             builder: (controller) {
+              print("update!");
               return Text(
                 '${controller.count}',
                 style: const TextStyle(
@@ -49,24 +49,35 @@ class WithGetX extends StatelessWidget {
               );
             },
           ),
-          GetBuilder<CountControllerWithGetX>(
-            // 개인 고유 id 부여
-            id: "second",
-            builder: (controller) {
-              return Text(
-                '${controller.count}',
-                style: const TextStyle(
-                  fontSize: 50,
-                ),
-              );
+          // GetBuilder<CountControllerWithGetX>(
+          //   // 개인 고유 id 부여
+          //   id: "second",
+          //   builder: (controller) {
+          //     return Text(
+          //       '${controller.count}',
+          //       style: const TextStyle(
+          //         fontSize: 50,
+          //       ),
+          //     );
+          //   },
+          // ),
+          // 특정 컨트롤러 아이디 부여해서 각각 사용 가능
+          // String id
+          _button(), // String id
+          ElevatedButton(
+            onPressed: () {
+              // context 없어서 context 명시 되지 않은 부분에서 사용하기에
+              // 따로 함수 기능으로 사용할 수 있다.
+              _controller.putNumber(5);
             },
-          ),
+            child: Text(
+              '5로 변경',
+              style: TextStyle(
+                fontSize: 30,
+              ),
+            ),
+          )
           // 특정 컨트롤러 아이디 부여해서 각각 사용 가능
-          // String id
-          _button("first"),
-          // String id
-          // 특정 컨트롤러 아이디 부여해서 각각 사용 가능
-          _button("second"),
         ],
       ),
     );
